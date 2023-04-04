@@ -1,0 +1,65 @@
+.FilterTickets {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  border: 1px solid rgba(223, 229, 236, 1);
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  &__item {
+    background-color: rgba(255, 255, 255, 1);
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+      border-right: 1px solid rgba(223, 229, 236, 1);
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+      border-left: 1px solid rgba(223, 229, 236, 1);
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    display: inline-block;
+    width: 100%;
+
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    padding: 15px;
+
+    &:hover {
+      background-color: rgb(112, 185, 246);
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+.active {
+  background-color: rgba(33, 150, 243, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+@media screen and (min-width: 768px) {
+  .FilterTickets {
+    position: sticky;
+    top: 0;
+
+    flex-wrap: nowrap;
+    flex-direction: row;
+
+    &__label {
+      width: unset;
+      text-align: unset;
+    }
+  }
+}

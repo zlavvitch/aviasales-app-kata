@@ -1,0 +1,84 @@
+.Ticket {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    color: rgba(33, 150, 243, 1);
+  }
+
+  &__logo {
+    max-width: 50px;
+  }
+
+  &__segment {
+    display: flex;
+    justify-content: space-between;
+
+    &:first-child {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(160, 176, 185, 1);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 8px;
+    line-height: 10px;
+    color: #4a4a4a;
+
+    width: 33.3%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Ticket {
+    &__header {
+      margin-bottom: 26px;
+    }
+
+    &__price {
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    &__logo {
+      max-width: unset;
+    }
+
+    &__title {
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    &__content {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+}

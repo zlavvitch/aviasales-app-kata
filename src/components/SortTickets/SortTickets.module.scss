@@ -1,0 +1,125 @@
+.FilterTransfer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: rgba(255, 255, 255, 1);
+  min-height: 100%;
+  min-width: 100%;
+  margin: 5px;
+  padding: 20px;
+
+  &--disactive {
+    display: none;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: #4a4a4a;
+    margin-bottom: 20px;
+  }
+
+  &__close {
+    color: rgba(33, 150, 243, 1);
+
+    &:hover {
+      color: rgba(74, 74, 74, 1);
+    }
+  }
+
+  &__list {
+    margin-bottom: auto;
+  }
+
+  &__item {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  &__item:hover {
+    background-color: rgba(241, 252, 255, 1);
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding-left: 10px;
+
+    .FilterTransfer__input {
+      display: none;
+    }
+  }
+
+  &__input + *::before {
+    content: "";
+    display: inline-block;
+    vertical-align: bottom;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(154, 187, 206, 1);
+    border-radius: 2px;
+    margin: 0;
+    margin-right: 10px;
+  }
+
+  &__input:checked + *::before {
+    content: "✔";
+    text-align: center;
+    color: rgba(33, 150, 243, 0.8);
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #4a4a4a;
+  }
+
+  &__btn {
+    align-self: center;
+    width: 80%;
+
+    background-color: rgb(102, 205, 99);
+    color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(223, 229, 236, 1);
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .FilterTransfer {
+    display: unset;
+    min-height: unset;
+    min-width: unset;
+
+    position: sticky;
+    top: 5px;
+    max-height: 255px;
+
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+    margin-right: 20px;
+    padding: 20px 20px 0 20px;
+
+    &__close {
+      display: none;
+    }
+
+    &__btn {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.TicketsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__btn {
+    width: 100%;
+    background-color: rgba(33, 150, 243, 1);
+    border: none;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+    padding: 15px 0 15px 0;
+  }
+}
