@@ -35,9 +35,17 @@ export const fetchId = () => async (dispatch) => {
   }
 };
 
-export const ticketsFetched = (tickets) => ({
-  type: "TICKETS_FETCHED",
+export const ticketsFetching = (tickets) => ({
+  type: "TICKETS_FETCHING",
   payload: tickets,
+});
+
+export const ticketsFetched = () => ({
+  type: "TICKETS_FETCHED",
+});
+
+export const ticketsFetchingLoading = () => ({
+  type: "TICKETS_FETCHING_LOADING",
 });
 
 export const ticketsFetchingError = () => ({
@@ -45,6 +53,8 @@ export const ticketsFetchingError = () => ({
 });
 
 export const fetchTickets = (searchId, prevTickets) => async (dispatch) => {
+  dispatch(ticketsFetchingLoading());
+
   try {
     const res = await fetch(
       `https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`
@@ -52,11 +62,10 @@ export const fetchTickets = (searchId, prevTickets) => async (dispatch) => {
 
     if (!res.ok) {
       if (res.status === 500) {
-        dispatch(fetchTickets(searchId, prevTickets));
         throw new Error("500", "Ошибка на сервере!");
-      } else {
-        throw new Error(`Could not fetch TICKETS, status ${res.status}`);
       }
+
+      throw new Error(`Could not fetch TICKETS, status ${res.status}`);
     }
 
     // eslint-disable-next-line prefer-const
@@ -64,8 +73,13 @@ export const fetchTickets = (searchId, prevTickets) => async (dispatch) => {
     tickets = [...prevTickets, ...tickets];
     const data = { stop, tickets };
 
-    dispatch(ticketsFetched(data));
+    dispatch(ticketsFetching(data));
   } catch (err) {
+    if (err.message === "500") {
+      dispatch(fetchTickets(searchId, prevTickets));
+      return;
+    }
+
     dispatch(ticketsFetchingError());
     throw err.message;
   }
